@@ -1,16 +1,34 @@
 package com.employeerecords.main;
 
+import java.util.Scanner;
+import java.util.UUID;
+
 import com.employeerecords.dataoperation.EmployeeOperationImplement;
+import com.employeerecords.filemanager.FileManager;
+import com.employeerecords.model.EmployeeEntity;
 import com.employeerecords.modelValidator.ValidateEntity;
 
 public class Main {
 
 	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		EmployeeEntity employee = new EmployeeEntity(0, "lawrence", "uche", 23, 145500,"Staff", "30-02-1999", "4 orji street", "lagos", "07017051276");
+		EmployeeEntity employee1 = new EmployeeEntity(0, "lawrencce", "uche", 13, 145500,"Staff", "28-02-1999", "4 orji street", "lagos", "07017051276");
 		// TODO Auto-generated method stub
-		System.out.println("Hello world");
-		String name = "\"\"";
-		String firstName = "lawrence";
-		ValidateEntity.isValidName(firstName);
+		System.out.println(ValidateEntity.validateEmployee(employee1));
+//		System.out.println(employee1.toString());
+		
+		
+		
+//		FileManager.createFile();
+//		System.out.println("Enter your firstname");
+//		String firstname = input.nextLine();
+//		employee.setFirstname(firstname);
+//		System.out.println("Enter your lastname");
+//		String lastname = input.nextLine();
+//		employee.setFirstname(lastname);
+//		FileManager.writeToFile(firstname);
+//		FileManager.writeToFile(lastname);
 		
 	}
 }

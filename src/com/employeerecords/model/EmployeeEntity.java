@@ -6,12 +6,14 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class EmployeeEntity {
 	
-	private static final String FILENAME = "employeeRecords.txt";
+	private static final AtomicInteger idGenerator = new AtomicInteger(0);
 	
-	private long employeeNumber;
+	private int employeeNumber;
 	
 	private String firstname;
 	
@@ -31,11 +33,17 @@ public class EmployeeEntity {
 	
 	private String phonenumber;
 
-
-	public EmployeeEntity(long employeeNumber, String firstname, String lastname, int age, double salary,
+	
+	
+	public EmployeeEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public EmployeeEntity(int employeeNumber, String firstname, String lastname, int age, double salary,
 			String department, String date, String address, String city, String phonenumber) {
 		super();
-		this.employeeNumber = employeeNumber;
+//	A static AtomicInteger that provides a thread-safe way to generate unique IDs.
+		this.employeeNumber = idGenerator.incrementAndGet(); 
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.age = age;
@@ -47,12 +55,8 @@ public class EmployeeEntity {
 		this.phonenumber = phonenumber;
 	}
 
-	public long getEmployeeNumber() {
+	public int getEmployeeNumber() {
 		return employeeNumber;
-	}
-
-	public void setEmployeeNumber(long employeeNumber) {
-		this.employeeNumber = employeeNumber;
 	}
 
 	public String getFirstname() {
